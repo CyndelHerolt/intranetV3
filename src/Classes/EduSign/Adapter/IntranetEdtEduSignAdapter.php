@@ -25,13 +25,9 @@ class IntranetEdtEduSignAdapter
         $dept = $edt->semestre->getDiplome()->getDepartement()->getId();
 
         $this->course = new EduSignCourse();
-        //complète l'objet $this->course avec des données fictive pour le test
         $this->course->name = $edt->matiere;
-//        $this->course->description = $edt->texte;
         //todo: diplome, parcours, semestre, grp, type de cours
 //        $this->course->description = "hello";
-
-        // ici -> date de l'edt + heure de début et de fin
         $debut = Carbon::createFromFormat("Y-m-d H:i:s", $edt->dateObjet->format('Y-m-d') . " " . $edt->heureDebut->format('H:i:s'));
         $this->course->start = $debut;
         $fin = Carbon::createFromFormat("Y-m-d H:i:s", $edt->dateObjet->format('Y-m-d') . " " . $edt->heureFin->format('H:i:s'));

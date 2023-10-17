@@ -52,7 +52,7 @@ class ApiEduSign
         $response = $client->request('POST', 'https://ext.edusign.fr/v1/course', [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $cleApi,
+                'Authorization' => 'Bearer ' . $this->cleApi,
             ],
             'json' => ['course' => $course->toArray()],
         ]);
@@ -108,7 +108,7 @@ class ApiEduSign
         $response = $client->request('POST', 'https://ext.edusign.fr/v1/group', [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $cleApi,
+                'Authorization' => 'Bearer ' . $this->cleApi,
             ],
             'json' => ['group' => $groupe->toArray()],
         ]);
@@ -173,7 +173,7 @@ class ApiEduSign
         $response = $client->request('POST', 'https://ext.edusign.fr/v1/student', [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $cleApi,
+                'Authorization' => 'Bearer ' . $this->cleApi,
             ],
             'json' => ['student' => $etudiant->toArray()],
         ]);
@@ -205,7 +205,7 @@ class ApiEduSign
         $response = $client->request('POST', 'https://ext.edusign.fr/v1/professor', [
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $cleApi,
+                'Authorization' => 'Bearer ' . $this->cleApi,
             ],
             'json' => ['professor' => $enseignant->toArray(), 'dontSendCredentials' => $enseignant->dontSendCredentials],
         ]);
@@ -231,5 +231,40 @@ class ApiEduSign
             $personnel->setIdEduSign($jsonId);
         }
         $this->personnelRepository->save($personnel);
+    }
+
+    public function getCourses(?string $id)
+    {
+        $client = HttpClient::create();
+
+        $response = $client->request('GET', 'https://ext.edusign.fr/v1/course/' . $id, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ' . $this->cleApi,
+            ]
+        ]);
+
+        $statusCode = $response->getStatusCode();
+        $content = $response->getContent();
+        // convertit JSON en tableau associatif PHP
+        $data = json_decode($content, true);
+
+        $course = "";
+        if (isset($data['result'])) {
+            $course = $data['result'];
+        }
+
+        //todo: renvoyer vers une méthode avec $course en paramètre pour créer un objet Absence pour chaque STUDENTS->state=false ?
+
+        $apprenant = "";
+        if (isset($data['result']) && isset($data['result']['STUDENTS'])) {
+            $apprenant = $data['result']['STUDENTS'];
+        }
+
+        dump($apprenant);
+
+//        dump($data);
+//        dump($statusCode);
+//        dump($content);
     }
 }
