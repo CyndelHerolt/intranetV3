@@ -50,7 +50,7 @@
     "tinymce": "^5.9.0",
     "tom-select": "^2.2.2",
     "webpack-notifier": "^1.6.0",
-    "stimulus-use": "^0.50.0"
+    "stimulus-use": "^0.52.1"
   },
   "auto-changelog": {
     "template": "keepachangelog",
