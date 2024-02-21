@@ -51,7 +51,7 @@
     "jquery": "^3.5.1",
     "stimulus-use": "^0.50.0",
     "sweetalert2": "^9.17.0",
-    "tinymce": "^5.9.0",
+    "tinymce": "^5.10.8",
     "tom-select": "^2.2.2",
     "webpack-notifier": "^1.6.0"
   },
