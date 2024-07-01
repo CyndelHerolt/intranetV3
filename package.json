@@ -52,7 +52,7 @@
     "jquery": "^3.5.1",
     "stimulus-use": "^0.50.0",
     "sweetalert2": "^9.17.0",
-    "tinymce": "^5.9.0",
+    "tinymce": "^7.0.0",
     "tom-select": "^2.2.2"
   },
   "auto-changelog": {
