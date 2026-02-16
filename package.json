@@ -44,7 +44,7 @@
     "@fortawesome/fontawesome-pro": "^6.0.0",
     "@hotwired/stimulus": "^3.2.0",
     "babel-core": "^4.7.16",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^9.0.0",
     "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^5.2.0",
     "flatpickr": "^4.6.9",
