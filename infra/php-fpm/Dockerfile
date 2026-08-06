@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.5.3RC1-fpm
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends locales apt-utils git libicu-dev g++ libpng-dev libxml2-dev libzip-dev libonig-dev libxslt-dev;
